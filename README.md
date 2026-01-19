@@ -15,12 +15,12 @@ Make sure to have these tools properly set up and configured in your environment
 
 Navigate to oblig folder in the terminal
 
-For part 1 execute the following command:
+For part 1, execute the following command:
 ```bash
 mvn compile exec:java@measures
 ```
 
-For part 2 execute the following command:
+For part 2, execute the following command:
 ```bash
 mvn compile exec:java@account
 ```
@@ -85,7 +85,7 @@ Consider the following Java code where a variable is being modified:
 ```java
 double example_yd = 1;
 example_yd *= 2; // the value it holds now is actually 1.8288
-System.out.println(example_yd) // will output 1.67225472
+System.out.println(example_yd) // will wrongly output 1.67225472
 ```
 
 In this example, after modifying `example_yd`, the value that it holds is not what we expect. This happens because compound assignment operators like `*=`, `+=`, etc. implicitly reference the field:
@@ -194,7 +194,7 @@ In the file [TransferAspect.java](./src/main/java/inf222/aop/account/aspect/Tran
     * Which accounts the transfer is between.
     * The amount that is transferred.
     * The currency that is transferred _from_ and the currency transferred _to_.
-* Transfers above should lof the following information:
+* Transfers above should log the following information:
     * The minimum value before logging.
     * Which accounts the transfer is between.
     * The amount that is transferred.
