@@ -73,13 +73,12 @@ public class MeasureAspect {
     }
 
     @Before("set(double inf222.aop.measures.Measures.*)")
-    public void checkValue(JoinPoint jp) throws Throwable {
-        Object newValObj = jp.getArgs()[0];
-        if (newValObj instanceof Double newVal) {
-            if (newVal < 0) {
-                throw new Error("Illegal modification");
-            }
-        }
+    public void checkValue(JoinPoint jp) {
+        String name = jp.getSignature().getName();
+        if (!pattern.matcher(name).matches()) return;
+
+        double newVal = (Double) jp.getArgs()[0];
+        if (newVal < 0) throw new Error("Illegal modification");
 
 
     }
