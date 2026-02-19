@@ -33,7 +33,7 @@ public class MeasureAspect {
 
     // Må bruke Object her for @Around
 
-    @Around("get(double inf222.aop.measures..*)")
+    @Around("get(double inf222.aop.measures.Measures.*)")
     public Object convertToMeters(ProceedingJoinPoint pjp) throws Throwable {
         Object value = pjp.proceed();
 
@@ -51,7 +51,7 @@ public class MeasureAspect {
     }
 
 
-    @Around("set(double inf222.aop.measures..*) && !cflow(execution(inf222.aop.measures.Measures.new(..)))")
+    @Around("set(double inf222.aop.measures.Measures.*) && !cflow(execution(inf222.aop.measures.Measures.new(..)))")
     public Object convertBackToOriginal(ProceedingJoinPoint pjp) throws Throwable {
         String name = pjp.getSignature().getName();
 
