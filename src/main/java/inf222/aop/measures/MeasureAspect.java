@@ -1,8 +1,10 @@
 package inf222.aop.measures;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 
 
 import java.util.HashMap;
@@ -63,13 +65,22 @@ public class MeasureAspect {
 
             double originalValue = (Double) inValueMeters / toMeter.get(unit);
 
-            if (originalValue < 0)
-                throw new Error("Illegal modification");
-
             return pjp.proceed(new Object[]{originalValue});
         }
 
         return pjp.proceed();
+
+    }
+
+    @Before("set(double inf222.aop.measures.Measures.*)")
+    public void checkValue(JoinPoint jp) throws Throwable {
+        Object newValObj = jp.getArgs()[0];
+        if (newValObj instanceof Double newVal) {
+            if (newVal < 0) {
+                throw new Error("Illegal modification");
+            }
+        }
+
 
     }
 
