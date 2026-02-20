@@ -11,11 +11,10 @@ import org.slf4j.LoggerFactory;
 import inf222.aop.account.Account;
 import inf222.aop.account.annotation.Transfer;
 
-/* TODO: annotation */
+
 @Aspect
 public class TransferAspect {
 
-    /* TODO: add the join point & pointcut & advice */
     @Around("execution(* *(..)) && @annotation(transfer)")
     public Object logTransfer(ProceedingJoinPoint pjp, Transfer transfer) throws Throwable {
         /* TODO */
@@ -63,7 +62,7 @@ public class TransferAspect {
         Account from = (Account) methodArgs[0];
         Account to = (Account) methodArgs[1];
         Double amount = (Double) methodArgs[2];
-        /* TODO */
+
         var message = String.format("International transfer from %s to %s, %s %s converted to %s",
                 from.getAccountName(),
                 to.getAccountName(),
@@ -75,7 +74,7 @@ public class TransferAspect {
     }
 
     private String logTransferAbove(Object[] methodArgs, double value) {
-        /* TODO */
+
         Account from = (Account) methodArgs[0];
         Account to = (Account) methodArgs[1];
         Double amount = (Double) methodArgs[2];
@@ -89,7 +88,7 @@ public class TransferAspect {
     }
 
     private String logErrors(Object[] methodArgs, String methodName, String[] methodParams) {
-        /* TODO */
+
         Account from = (Account) methodArgs[0];
         Account to = (Account) methodArgs[1];
         Double amount = (Double) methodArgs[2];

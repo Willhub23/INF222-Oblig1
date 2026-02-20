@@ -12,9 +12,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/* TODO: annotation */
 
-// Alle klasser som inneholder advices må være merket med @Aspect
+
 @Aspect()
 public class MeasureAspect {
     private final String regex;
@@ -33,7 +32,6 @@ public class MeasureAspect {
         pattern = Pattern.compile(regex);
     }
 
-    // Må bruke Object her for @Around
 
     @Around("get(double inf222.aop.measures.Measures.*)")
     public Object convertToMeters(ProceedingJoinPoint pjp) throws Throwable {
